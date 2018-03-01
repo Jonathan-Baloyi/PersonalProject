@@ -22,12 +22,12 @@
                     <ng-container matColumnDef="action">
                         <mat-header-cell *matHeaderCellDef></mat-header-cell>
                         <mat-cell *matCellDef="let element">
-                            <a (click)="edit(element.id)">
+                            <button mat-icon-button (click)="edit(element.id)">
                                 <mat-icon title="Edit Subject" style="color:blue">edit</mat-icon>
-                            </a>
-                            <a class="col-lg-1" (click)="delete(element.id)">
+                            </button>
+                            <button mat-icon-button class="col-lg-1" (click)="delete(element.id)">
                                 <mat-icon title="Delete Subject" style="color:red">delete_forever</mat-icon>
-                            </a>
+                            </button>
                         </mat-cell>
                     </ng-container>
 

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SubjectService } from '../../../services/subject.service';
 import { Subjects } from '../../../models';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-subject',
@@ -12,17 +13,23 @@ import { Router } from '@angular/router';
 export class SubjectComponent implements OnInit {
 
   displayedColumns = ['name', 'code', 'action'];
-  dataSource;
+  dataSource = new MatTableDataSource();
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   constructor(private subjectService: SubjectService, private router: Router) { }
 
 
+
   ngOnInit() {
+
     this.loadSubjects();
   }
 
   loadSubjects() {
     this.subjectService.ApiSubjectsGet().subscribe( x => {
         this.dataSource = new MatTableDataSource(x);
+        this.dataSource.paginator = this.paginator;
     });
   }
 

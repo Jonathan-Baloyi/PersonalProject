@@ -1,12 +1,13 @@
 <div class="container">
     <div class="row">
-        <mat-card class="col-xl-6 col-xl-offset-9">
+        <mat-card class="col-xl-6 col-xl-offset-9 m">
             <mat-card-header>
                 <h3>Subjects</h3>
                 <button mat-mini-fab color="primary" (click)="add()"><mat-icon title="Add Subject">add</mat-icon></button>
             </mat-card-header>
             <mat-card-content>
-                <mat-table #table [dataSource]="dataSource">
+                <div class="col-xl-6" *ngIf="dataSource.data.length === 0">*** No Subjects are defined</div>
+                <mat-table #table *ngIf="dataSource.data.length > 0" [dataSource]="dataSource">
 
                     <ng-container matColumnDef="name">
                         <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
@@ -33,6 +34,9 @@
                     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
                 </mat-table>
+
+                <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+                </mat-paginator>
             </mat-card-content>
 
         </mat-card>

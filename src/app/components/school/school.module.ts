@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SubjectComponent } from './subject/subject.component';
-import {CommonModule} from '@angular/common';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   // DateAdapter,
   // MAT_DATE_FORMATS,
@@ -27,11 +27,17 @@ import {
   MatError,
   MatChipInput,
   MatChipRemove,
+  MatTabsModule,
 } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 import { SubjectService, ValuesService } from '../../services';
 import { AddSubjectComponent } from './subject/add-subject/add-subject.component';
 import { EditSubjectComponent } from './subject/edit-subject/edit-subject.component';
+import { RouterModule } from '@angular/router';
+import { StudentComponent } from './student/student.component';
+import { TeacherComponent } from './teacher/teacher.component';
+import { ClassComponent } from './class/class.component';
+import { AssesmentComponent } from './assesment/assesment.component';
 
 @NgModule({
   imports: [
@@ -56,6 +62,8 @@ import { EditSubjectComponent } from './subject/edit-subject/edit-subject.compon
     MatPaginatorModule,
     MatDatepickerModule,
     MatDialogModule,
+    RouterModule,
+    MatTabsModule,
   ],
   providers: [
     SubjectService,
@@ -65,9 +73,16 @@ import { EditSubjectComponent } from './subject/edit-subject/edit-subject.compon
     MatChipInput,
     MatChipRemove],
 
-  declarations: [SubjectComponent, AddSubjectComponent, EditSubjectComponent],
+  declarations: [SubjectComponent,
+    AddSubjectComponent,
+    EditSubjectComponent,
+    StudentComponent,
+    TeacherComponent,
+    ClassComponent,
+    AssesmentComponent
+  ],
 
-  exports: [  CommonModule,
+  exports: [CommonModule,
     FormsModule,
     MatNativeDateModule,
     ReactiveFormsModule,
@@ -75,6 +90,7 @@ import { EditSubjectComponent } from './subject/edit-subject/edit-subject.compon
     MatInputModule,
     MatTooltipModule,
     MatButtonModule,
+    RouterModule,
     MatSelectModule,
     MatCheckboxModule,
     MatRadioModule,
@@ -86,6 +102,7 @@ import { EditSubjectComponent } from './subject/edit-subject/edit-subject.compon
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatTabsModule,
     MatDialogModule,
     MatSlideToggleModule]
 })

@@ -19,7 +19,7 @@ export class AddSubjectComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
-    this.subjectService.ApiSubjectsPost(this.subject).subscribe(x => {
+    this.subjectService.ApiSubjectPost(this.subject).subscribe(x => {
       f.reset();
     });
   }

@@ -30,7 +30,15 @@ import {
   MatTabsModule,
 } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
-import { SubjectService, ValuesService } from '../../services';
+import {
+  SubjectService,
+  ValuesService,
+  ClassLevelService,
+  GradesService,
+  StudentsService,
+  TeachersService,
+  TestTypeService
+} from '../../services';
 import { AddSubjectComponent } from './subject/add-subject/add-subject.component';
 import { EditSubjectComponent } from './subject/edit-subject/edit-subject.component';
 import { RouterModule } from '@angular/router';
@@ -38,6 +46,17 @@ import { StudentComponent } from './student/student.component';
 import { TeacherComponent } from './teacher/teacher.component';
 import { ClassComponent } from './class/class.component';
 import { AssesmentComponent } from './assesment/assesment.component';
+import { AddClassLevelComponent } from './class/add-class-level/add-class-level.component';
+import { EditClassLevelComponent } from './class/edit-class-level/edit-class-level.component';
+import { AddStudentComponent } from './student/add-student/add-student.component';
+import { EditStudentComponent } from './student/edit-student/edit-student.component';
+import { AddAssesmentComponent } from './assesment/add-assesment/add-assesment.component';
+import { EditAssesmentComponent } from './assesment/edit-assesment/edit-assesment.component';
+import { AddTeacherComponent } from './teacher/add-teacher/add-teacher.component';
+import { EditTeacherComponent } from './teacher/edit-teacher/edit-teacher.component';
+import { GradesComponent } from './grades/grades.component';
+import { AddGradesComponent } from './grades/add-grades/add-grades.component';
+import { EditGradesComponent } from './grades/edit-grades/edit-grades.component';
 
 @NgModule({
   imports: [
@@ -66,7 +85,12 @@ import { AssesmentComponent } from './assesment/assesment.component';
     MatTabsModule,
   ],
   providers: [
+    ClassLevelService,
+    GradesService,
+    StudentsService,
     SubjectService,
+    TeachersService,
+    TestTypeService,
     ValuesService,
     MatIconRegistry,
     MatError,
@@ -79,7 +103,18 @@ import { AssesmentComponent } from './assesment/assesment.component';
     StudentComponent,
     TeacherComponent,
     ClassComponent,
-    AssesmentComponent
+    AssesmentComponent,
+    AddClassLevelComponent,
+    EditClassLevelComponent,
+    AddStudentComponent,
+    EditStudentComponent,
+    AddAssesmentComponent,
+    EditAssesmentComponent,
+    AddTeacherComponent,
+    EditTeacherComponent,
+    GradesComponent,
+    AddGradesComponent,
+    EditGradesComponent
   ],
 
   exports: [CommonModule,

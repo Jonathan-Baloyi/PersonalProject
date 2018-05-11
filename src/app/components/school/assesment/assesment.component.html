@@ -1,3 +1,54 @@
-<p>
-  assesment works!
-</p>
+<div class="container">
+    <div class="row">
+        <mat-card class="col-xl-9 col-md-9 m">
+            <mat-card-header>
+                <h3>Assesments</h3>
+                <button mat-mini-fab color="primary" (click)="add()"><mat-icon title="Add Subject">add</mat-icon></button>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="col-xl-6" *ngIf="dataSource.data.length === 0">*** No Subjects are defined</div>
+                <mat-table #table *ngIf="dataSource.data.length > 0" [dataSource]="dataSource">
+
+                    <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="subject">
+                        <mat-header-cell *matHeaderCellDef> Subject </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.subjectId}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="dateWritten">
+                        <mat-header-cell *matHeaderCellDef> Assesment Date</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.dateWritten | date: 'yyyy - MM - dd'}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="duration">
+                        <mat-header-cell *matHeaderCellDef> Duration</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.duration}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="total">
+                        <mat-header-cell *matHeaderCellDef> Total Marks (not %) </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.subjectId}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="edit">
+                        <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                            <button mat-icon-button (click)="edit(element.id)">
+                              <mat-icon title="Edit Subject" style="color:blue">edit</mat-icon>
+                          </button>
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+
+                <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+                </mat-paginator>
+            </mat-card-content>
+
+        </mat-card>
+    </div>
+</div>

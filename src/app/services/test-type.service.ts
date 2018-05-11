@@ -9,10 +9,10 @@ import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
 import { filter } from 'rxjs/operators/filter';
 
-import { Subjects } from '../models/subjects';
+import { TestType } from '../models/test-type';
 
 @Injectable()
-export class SubjectService extends BaseService {
+export class TestTypeService extends BaseService {
   constructor(
     config: ApiConfiguration,
     http: HttpClient
@@ -23,13 +23,13 @@ export class SubjectService extends BaseService {
   /**
    * @return Success
    */
-   ApiSubjectGetResponse(): Observable<HttpResponse<Subjects[]>> {
+   ApiTestTypeGetResponse(): Observable<HttpResponse<TestType[]>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
     let req = new HttpRequest<any>(
       "GET",
-      this.rootUrl + `/api/Subject`,
+      this.rootUrl + `/api/TestType`,
       __body,
       {
         headers: __headers,
@@ -41,9 +41,9 @@ export class SubjectService extends BaseService {
       filter(_r => _r instanceof HttpResponse),
       map(_r => {
         let _resp = _r as HttpResponse<any>;
-        let _body: Subjects[] = null;
-        _body = _resp.body as Subjects[]
-        return _resp.clone({body: _body}) as HttpResponse<Subjects[]>;
+        let _body: TestType[] = null;
+        _body = _resp.body as TestType[]
+        return _resp.clone({body: _body}) as HttpResponse<TestType[]>;
       })
     );
   }
@@ -51,24 +51,24 @@ export class SubjectService extends BaseService {
   /**
    * @return Success
    */
-   ApiSubjectGet(): Observable<Subjects[]> {
-    return this.ApiSubjectGetResponse().pipe(
+   ApiTestTypeGet(): Observable<TestType[]> {
+    return this.ApiTestTypeGetResponse().pipe(
       map(_r => _r.body)
     );
   }
 
   /**
-   * @param subjects undefined
+   * @param testTypes undefined
    * @return Success
    */
-   ApiSubjectPostResponse(subjects?: Subjects): Observable<HttpResponse<Subjects>> {
+   ApiTestTypePostResponse(testTypes?: TestType): Observable<HttpResponse<TestType>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-    __body = subjects;
+    __body = testTypes;
     let req = new HttpRequest<any>(
       "POST",
-      this.rootUrl + `/api/Subject`,
+      this.rootUrl + `/api/TestType`,
       __body,
       {
         headers: __headers,
@@ -80,19 +80,19 @@ export class SubjectService extends BaseService {
       filter(_r => _r instanceof HttpResponse),
       map(_r => {
         let _resp = _r as HttpResponse<any>;
-        let _body: Subjects = null;
-        _body = _resp.body as Subjects
-        return _resp.clone({body: _body}) as HttpResponse<Subjects>;
+        let _body: TestType = null;
+        _body = _resp.body as TestType
+        return _resp.clone({body: _body}) as HttpResponse<TestType>;
       })
     );
   }
 
   /**
-   * @param subjects undefined
+   * @param testTypes undefined
    * @return Success
    */
-   ApiSubjectPost(subjects?: Subjects): Observable<Subjects> {
-    return this.ApiSubjectPostResponse(subjects).pipe(
+   ApiTestTypePost(testTypes?: TestType): Observable<TestType> {
+    return this.ApiTestTypePostResponse(testTypes).pipe(
       map(_r => _r.body)
     );
   }
@@ -101,14 +101,14 @@ export class SubjectService extends BaseService {
    * @param id undefined
    * @return Success
    */
-   ApiSubjectByIdGetResponse(id: number): Observable<HttpResponse<Subjects>> {
+   ApiTestTypeByIdGetResponse(id: number): Observable<HttpResponse<TestType>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
     let req = new HttpRequest<any>(
       "GET",
-      this.rootUrl + `/api/Subject/${id}`,
+      this.rootUrl + `/api/TestType/${id}`,
       __body,
       {
         headers: __headers,
@@ -120,9 +120,9 @@ export class SubjectService extends BaseService {
       filter(_r => _r instanceof HttpResponse),
       map(_r => {
         let _resp = _r as HttpResponse<any>;
-        let _body: Subjects = null;
-        _body = _resp.body as Subjects
-        return _resp.clone({body: _body}) as HttpResponse<Subjects>;
+        let _body: TestType = null;
+        _body = _resp.body as TestType
+        return _resp.clone({body: _body}) as HttpResponse<TestType>;
       })
     );
   }
@@ -131,30 +131,30 @@ export class SubjectService extends BaseService {
    * @param id undefined
    * @return Success
    */
-   ApiSubjectByIdGet(id: number): Observable<Subjects> {
-    return this.ApiSubjectByIdGetResponse(id).pipe(
+   ApiTestTypeByIdGet(id: number): Observable<TestType> {
+    return this.ApiTestTypeByIdGetResponse(id).pipe(
       map(_r => _r.body)
     );
   }
 
   /**
-   * @param params The `SubjectService.ApiSubjectByIdPutParams` containing the following parameters:
+   * @param params The `TestTypeService.ApiTestTypeByIdPutParams` containing the following parameters:
    *
    * - `id`: 
    *
-   * - `subjects`: 
+   * - `testTypes`: 
    *
    * @return Success
    */
-   ApiSubjectByIdPutResponse(params: SubjectService.ApiSubjectByIdPutParams): Observable<HttpResponse<Subjects>> {
+   ApiTestTypeByIdPutResponse(params: TestTypeService.ApiTestTypeByIdPutParams): Observable<HttpResponse<TestType>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
-    __body = params.subjects;
+    __body = params.testTypes;
     let req = new HttpRequest<any>(
       "PUT",
-      this.rootUrl + `/api/Subject/${params.id}`,
+      this.rootUrl + `/api/TestType/${params.id}`,
       __body,
       {
         headers: __headers,
@@ -166,24 +166,24 @@ export class SubjectService extends BaseService {
       filter(_r => _r instanceof HttpResponse),
       map(_r => {
         let _resp = _r as HttpResponse<any>;
-        let _body: Subjects = null;
-        _body = _resp.body as Subjects
-        return _resp.clone({body: _body}) as HttpResponse<Subjects>;
+        let _body: TestType = null;
+        _body = _resp.body as TestType
+        return _resp.clone({body: _body}) as HttpResponse<TestType>;
       })
     );
   }
 
   /**
-   * @param params The `SubjectService.ApiSubjectByIdPutParams` containing the following parameters:
+   * @param params The `TestTypeService.ApiTestTypeByIdPutParams` containing the following parameters:
    *
    * - `id`: 
    *
-   * - `subjects`: 
+   * - `testTypes`: 
    *
    * @return Success
    */
-   ApiSubjectByIdPut(params: SubjectService.ApiSubjectByIdPutParams): Observable<Subjects> {
-    return this.ApiSubjectByIdPutResponse(params).pipe(
+   ApiTestTypeByIdPut(params: TestTypeService.ApiTestTypeByIdPutParams): Observable<TestType> {
+    return this.ApiTestTypeByIdPutResponse(params).pipe(
       map(_r => _r.body)
     );
   }
@@ -191,14 +191,14 @@ export class SubjectService extends BaseService {
   /**
    * @param id undefined
    */
-   ApiSubjectByIdDeleteResponse(id: number): Observable<HttpResponse<void>> {
+   ApiTestTypeByIdDeleteResponse(id: number): Observable<HttpResponse<void>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
     let req = new HttpRequest<any>(
       "DELETE",
-      this.rootUrl + `/api/Subject/${id}`,
+      this.rootUrl + `/api/TestType/${id}`,
       __body,
       {
         headers: __headers,
@@ -220,22 +220,22 @@ export class SubjectService extends BaseService {
   /**
    * @param id undefined
    */
-   ApiSubjectByIdDelete(id: number): Observable<void> {
-    return this.ApiSubjectByIdDeleteResponse(id).pipe(
+   ApiTestTypeByIdDelete(id: number): Observable<void> {
+    return this.ApiTestTypeByIdDeleteResponse(id).pipe(
       map(_r => _r.body)
     );
   }
 }
 
-export module SubjectService {
+export module TestTypeService {
 
   /**
-   * Parameters for ApiSubjectByIdPut
+   * Parameters for ApiTestTypeByIdPut
    */
-   export interface ApiSubjectByIdPutParams {
+   export interface ApiTestTypeByIdPutParams {
 
     id: number;
 
-    subjects?: Subjects;
+    testTypes?: TestType;
   }
 }

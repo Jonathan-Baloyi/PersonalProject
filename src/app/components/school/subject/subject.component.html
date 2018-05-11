@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <mat-card class="col-xl-10 col-xl-offset-9 m">
+        <mat-card class="col-xl-9 col-md-9 m">
             <mat-card-header>
                 <h3>Subjects</h3>
                 <button mat-mini-fab color="primary" (click)="add()"><mat-icon title="Add Subject">add</mat-icon></button>
@@ -19,12 +19,17 @@
                         <mat-cell *matCellDef="let element"> {{element.code}} </mat-cell>
                     </ng-container>
 
-                    <ng-container matColumnDef="action">
-                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <ng-container matColumnDef="edit">
+                        <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
                         <mat-cell *matCellDef="let element">
                             <button mat-icon-button (click)="edit(element.id)">
                                 <mat-icon title="Edit Subject" style="color:blue">edit</mat-icon>
                             </button>
+                        </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="delete">
+                        <mat-header-cell *matHeaderCellDef>Delete</mat-header-cell>
+                        <mat-cell *matCellDef="let element">
                             <button mat-icon-button class="col-lg-1" (click)="delete(element.id)">
                                 <mat-icon title="Delete Subject" style="color:red">delete_forever</mat-icon>
                             </button>

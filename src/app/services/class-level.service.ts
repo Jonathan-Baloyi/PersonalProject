@@ -9,10 +9,10 @@ import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
 import { filter } from 'rxjs/operators/filter';
 
-import { Subjects } from '../models/subjects';
+import { ClassLevel } from '../models/class-level';
 
 @Injectable()
-export class SubjectService extends BaseService {
+export class ClassLevelService extends BaseService {
   constructor(
     config: ApiConfiguration,
     http: HttpClient
@@ -23,13 +23,13 @@ export class SubjectService extends BaseService {
   /**
    * @return Success
    */
-   ApiSubjectGetResponse(): Observable<HttpResponse<Subjects[]>> {
+   ApiClassGetResponse(): Observable<HttpResponse<ClassLevel[]>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
     let req = new HttpRequest<any>(
       "GET",
-      this.rootUrl + `/api/Subject`,
+      this.rootUrl + `/api/class`,
       __body,
       {
         headers: __headers,
@@ -41,9 +41,9 @@ export class SubjectService extends BaseService {
       filter(_r => _r instanceof HttpResponse),
       map(_r => {
         let _resp = _r as HttpResponse<any>;
-        let _body: Subjects[] = null;
-        _body = _resp.body as Subjects[]
-        return _resp.clone({body: _body}) as HttpResponse<Subjects[]>;
+        let _body: ClassLevel[] = null;
+        _body = _resp.body as ClassLevel[]
+        return _resp.clone({body: _body}) as HttpResponse<ClassLevel[]>;
       })
     );
   }
@@ -51,24 +51,24 @@ export class SubjectService extends BaseService {
   /**
    * @return Success
    */
-   ApiSubjectGet(): Observable<Subjects[]> {
-    return this.ApiSubjectGetResponse().pipe(
+   ApiClassGet(): Observable<ClassLevel[]> {
+    return this.ApiClassGetResponse().pipe(
       map(_r => _r.body)
     );
   }
 
   /**
-   * @param subjects undefined
+   * @param ClassLevels undefined
    * @return Success
    */
-   ApiSubjectPostResponse(subjects?: Subjects): Observable<HttpResponse<Subjects>> {
+   ApiClassPostResponse(ClassLevels?: ClassLevel): Observable<HttpResponse<ClassLevel>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-    __body = subjects;
+    __body = ClassLevels;
     let req = new HttpRequest<any>(
       "POST",
-      this.rootUrl + `/api/Subject`,
+      this.rootUrl + `/api/class`,
       __body,
       {
         headers: __headers,
@@ -80,19 +80,19 @@ export class SubjectService extends BaseService {
       filter(_r => _r instanceof HttpResponse),
       map(_r => {
         let _resp = _r as HttpResponse<any>;
-        let _body: Subjects = null;
-        _body = _resp.body as Subjects
-        return _resp.clone({body: _body}) as HttpResponse<Subjects>;
+        let _body: ClassLevel = null;
+        _body = _resp.body as ClassLevel
+        return _resp.clone({body: _body}) as HttpResponse<ClassLevel>;
       })
     );
   }
 
   /**
-   * @param subjects undefined
+   * @param ClassLevels undefined
    * @return Success
    */
-   ApiSubjectPost(subjects?: Subjects): Observable<Subjects> {
-    return this.ApiSubjectPostResponse(subjects).pipe(
+   ApiClassPost(ClassLevels?: ClassLevel): Observable<ClassLevel> {
+    return this.ApiClassPostResponse(ClassLevels).pipe(
       map(_r => _r.body)
     );
   }
@@ -101,14 +101,14 @@ export class SubjectService extends BaseService {
    * @param id undefined
    * @return Success
    */
-   ApiSubjectByIdGetResponse(id: number): Observable<HttpResponse<Subjects>> {
+   ApiClassByIdGetResponse(id: number): Observable<HttpResponse<ClassLevel>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
     let req = new HttpRequest<any>(
       "GET",
-      this.rootUrl + `/api/Subject/${id}`,
+      this.rootUrl + `/api/class/${id}`,
       __body,
       {
         headers: __headers,
@@ -120,9 +120,9 @@ export class SubjectService extends BaseService {
       filter(_r => _r instanceof HttpResponse),
       map(_r => {
         let _resp = _r as HttpResponse<any>;
-        let _body: Subjects = null;
-        _body = _resp.body as Subjects
-        return _resp.clone({body: _body}) as HttpResponse<Subjects>;
+        let _body: ClassLevel = null;
+        _body = _resp.body as ClassLevel
+        return _resp.clone({body: _body}) as HttpResponse<ClassLevel>;
       })
     );
   }
@@ -131,30 +131,30 @@ export class SubjectService extends BaseService {
    * @param id undefined
    * @return Success
    */
-   ApiSubjectByIdGet(id: number): Observable<Subjects> {
-    return this.ApiSubjectByIdGetResponse(id).pipe(
+   ApiClassByIdGet(id: number): Observable<ClassLevel> {
+    return this.ApiClassByIdGetResponse(id).pipe(
       map(_r => _r.body)
     );
   }
 
   /**
-   * @param params The `SubjectService.ApiSubjectByIdPutParams` containing the following parameters:
+   * @param params The `ClassLevelService.ApiClassByIdPutParams` containing the following parameters:
    *
    * - `id`: 
    *
-   * - `subjects`: 
+   * - `ClassLevels`: 
    *
    * @return Success
    */
-   ApiSubjectByIdPutResponse(params: SubjectService.ApiSubjectByIdPutParams): Observable<HttpResponse<Subjects>> {
+   ApiClassByIdPutResponse(params: ClassLevelService.ApiClassByIdPutParams): Observable<HttpResponse<ClassLevel>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
-    __body = params.subjects;
+    __body = params.ClassLevels;
     let req = new HttpRequest<any>(
       "PUT",
-      this.rootUrl + `/api/Subject/${params.id}`,
+      this.rootUrl + `/api/class/${params.id}`,
       __body,
       {
         headers: __headers,
@@ -166,24 +166,24 @@ export class SubjectService extends BaseService {
       filter(_r => _r instanceof HttpResponse),
       map(_r => {
         let _resp = _r as HttpResponse<any>;
-        let _body: Subjects = null;
-        _body = _resp.body as Subjects
-        return _resp.clone({body: _body}) as HttpResponse<Subjects>;
+        let _body: ClassLevel = null;
+        _body = _resp.body as ClassLevel
+        return _resp.clone({body: _body}) as HttpResponse<ClassLevel>;
       })
     );
   }
 
   /**
-   * @param params The `SubjectService.ApiSubjectByIdPutParams` containing the following parameters:
+   * @param params The `ClassLevelService.ApiClassByIdPutParams` containing the following parameters:
    *
    * - `id`: 
    *
-   * - `subjects`: 
+   * - `ClassLevels`: 
    *
    * @return Success
    */
-   ApiSubjectByIdPut(params: SubjectService.ApiSubjectByIdPutParams): Observable<Subjects> {
-    return this.ApiSubjectByIdPutResponse(params).pipe(
+   ApiClassByIdPut(params: ClassLevelService.ApiClassByIdPutParams): Observable<ClassLevel> {
+    return this.ApiClassByIdPutResponse(params).pipe(
       map(_r => _r.body)
     );
   }
@@ -191,14 +191,14 @@ export class SubjectService extends BaseService {
   /**
    * @param id undefined
    */
-   ApiSubjectByIdDeleteResponse(id: number): Observable<HttpResponse<void>> {
+   ApiClassByIdDeleteResponse(id: number): Observable<HttpResponse<void>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
     let req = new HttpRequest<any>(
       "DELETE",
-      this.rootUrl + `/api/Subject/${id}`,
+      this.rootUrl + `/api/class/${id}`,
       __body,
       {
         headers: __headers,
@@ -220,22 +220,22 @@ export class SubjectService extends BaseService {
   /**
    * @param id undefined
    */
-   ApiSubjectByIdDelete(id: number): Observable<void> {
-    return this.ApiSubjectByIdDeleteResponse(id).pipe(
+   ApiClassByIdDelete(id: number): Observable<void> {
+    return this.ApiClassByIdDeleteResponse(id).pipe(
       map(_r => _r.body)
     );
   }
 }
 
-export module SubjectService {
+export module ClassLevelService {
 
   /**
-   * Parameters for ApiSubjectByIdPut
+   * Parameters for ApiClassByIdPut
    */
-   export interface ApiSubjectByIdPutParams {
+   export interface ApiClassByIdPutParams {
 
     id: number;
 
-    subjects?: Subjects;
+    ClassLevels?: ClassLevel;
   }
 }

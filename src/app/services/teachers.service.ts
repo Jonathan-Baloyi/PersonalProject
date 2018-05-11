@@ -9,10 +9,10 @@ import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
 import { filter } from 'rxjs/operators/filter';
 
-import { Subjects } from '../models/subjects';
+import { Teachers } from '../models/teachers';
 
 @Injectable()
-export class SubjectService extends BaseService {
+export class TeachersService extends BaseService {
   constructor(
     config: ApiConfiguration,
     http: HttpClient
@@ -23,13 +23,13 @@ export class SubjectService extends BaseService {
   /**
    * @return Success
    */
-   ApiSubjectGetResponse(): Observable<HttpResponse<Subjects[]>> {
+   ApiTeachersGetResponse(): Observable<HttpResponse<Teachers[]>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
     let req = new HttpRequest<any>(
       "GET",
-      this.rootUrl + `/api/Subject`,
+      this.rootUrl + `/api/Teachers`,
       __body,
       {
         headers: __headers,
@@ -41,9 +41,9 @@ export class SubjectService extends BaseService {
       filter(_r => _r instanceof HttpResponse),
       map(_r => {
         let _resp = _r as HttpResponse<any>;
-        let _body: Subjects[] = null;
-        _body = _resp.body as Subjects[]
-        return _resp.clone({body: _body}) as HttpResponse<Subjects[]>;
+        let _body: Teachers[] = null;
+        _body = _resp.body as Teachers[]
+        return _resp.clone({body: _body}) as HttpResponse<Teachers[]>;
       })
     );
   }
@@ -51,24 +51,24 @@ export class SubjectService extends BaseService {
   /**
    * @return Success
    */
-   ApiSubjectGet(): Observable<Subjects[]> {
-    return this.ApiSubjectGetResponse().pipe(
+   ApiTeachersGet(): Observable<Teachers[]> {
+    return this.ApiTeachersGetResponse().pipe(
       map(_r => _r.body)
     );
   }
 
   /**
-   * @param subjects undefined
+   * @param teachers undefined
    * @return Success
    */
-   ApiSubjectPostResponse(subjects?: Subjects): Observable<HttpResponse<Subjects>> {
+   ApiTeachersPostResponse(teachers?: Teachers): Observable<HttpResponse<Teachers>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
-    __body = subjects;
+    __body = teachers;
     let req = new HttpRequest<any>(
       "POST",
-      this.rootUrl + `/api/Subject`,
+      this.rootUrl + `/api/Teachers`,
       __body,
       {
         headers: __headers,
@@ -80,19 +80,19 @@ export class SubjectService extends BaseService {
       filter(_r => _r instanceof HttpResponse),
       map(_r => {
         let _resp = _r as HttpResponse<any>;
-        let _body: Subjects = null;
-        _body = _resp.body as Subjects
-        return _resp.clone({body: _body}) as HttpResponse<Subjects>;
+        let _body: Teachers = null;
+        _body = _resp.body as Teachers
+        return _resp.clone({body: _body}) as HttpResponse<Teachers>;
       })
     );
   }
 
   /**
-   * @param subjects undefined
+   * @param teachers undefined
    * @return Success
    */
-   ApiSubjectPost(subjects?: Subjects): Observable<Subjects> {
-    return this.ApiSubjectPostResponse(subjects).pipe(
+   ApiTeachersPost(teachers?: Teachers): Observable<Teachers> {
+    return this.ApiTeachersPostResponse(teachers).pipe(
       map(_r => _r.body)
     );
   }
@@ -101,14 +101,14 @@ export class SubjectService extends BaseService {
    * @param id undefined
    * @return Success
    */
-   ApiSubjectByIdGetResponse(id: number): Observable<HttpResponse<Subjects>> {
+   ApiTeachersByIdGetResponse(id: number): Observable<HttpResponse<Teachers>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
     let req = new HttpRequest<any>(
       "GET",
-      this.rootUrl + `/api/Subject/${id}`,
+      this.rootUrl + `/api/Teachers/${id}`,
       __body,
       {
         headers: __headers,
@@ -120,9 +120,9 @@ export class SubjectService extends BaseService {
       filter(_r => _r instanceof HttpResponse),
       map(_r => {
         let _resp = _r as HttpResponse<any>;
-        let _body: Subjects = null;
-        _body = _resp.body as Subjects
-        return _resp.clone({body: _body}) as HttpResponse<Subjects>;
+        let _body: Teachers = null;
+        _body = _resp.body as Teachers
+        return _resp.clone({body: _body}) as HttpResponse<Teachers>;
       })
     );
   }
@@ -131,30 +131,30 @@ export class SubjectService extends BaseService {
    * @param id undefined
    * @return Success
    */
-   ApiSubjectByIdGet(id: number): Observable<Subjects> {
-    return this.ApiSubjectByIdGetResponse(id).pipe(
+   ApiTeachersByIdGet(id: number): Observable<Teachers> {
+    return this.ApiTeachersByIdGetResponse(id).pipe(
       map(_r => _r.body)
     );
   }
 
   /**
-   * @param params The `SubjectService.ApiSubjectByIdPutParams` containing the following parameters:
+   * @param params The `TeachersService.ApiTeachersByIdPutParams` containing the following parameters:
    *
    * - `id`: 
    *
-   * - `subjects`: 
+   * - `teachers`: 
    *
    * @return Success
    */
-   ApiSubjectByIdPutResponse(params: SubjectService.ApiSubjectByIdPutParams): Observable<HttpResponse<Subjects>> {
+   ApiTeachersByIdPutResponse(params: TeachersService.ApiTeachersByIdPutParams): Observable<HttpResponse<Teachers>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
-    __body = params.subjects;
+    __body = params.teachers;
     let req = new HttpRequest<any>(
       "PUT",
-      this.rootUrl + `/api/Subject/${params.id}`,
+      this.rootUrl + `/api/Teachers/${params.id}`,
       __body,
       {
         headers: __headers,
@@ -166,24 +166,24 @@ export class SubjectService extends BaseService {
       filter(_r => _r instanceof HttpResponse),
       map(_r => {
         let _resp = _r as HttpResponse<any>;
-        let _body: Subjects = null;
-        _body = _resp.body as Subjects
-        return _resp.clone({body: _body}) as HttpResponse<Subjects>;
+        let _body: Teachers = null;
+        _body = _resp.body as Teachers
+        return _resp.clone({body: _body}) as HttpResponse<Teachers>;
       })
     );
   }
 
   /**
-   * @param params The `SubjectService.ApiSubjectByIdPutParams` containing the following parameters:
+   * @param params The `TeachersService.ApiTeachersByIdPutParams` containing the following parameters:
    *
    * - `id`: 
    *
-   * - `subjects`: 
+   * - `teachers`: 
    *
    * @return Success
    */
-   ApiSubjectByIdPut(params: SubjectService.ApiSubjectByIdPutParams): Observable<Subjects> {
-    return this.ApiSubjectByIdPutResponse(params).pipe(
+   ApiTeachersByIdPut(params: TeachersService.ApiTeachersByIdPutParams): Observable<Teachers> {
+    return this.ApiTeachersByIdPutResponse(params).pipe(
       map(_r => _r.body)
     );
   }
@@ -191,14 +191,14 @@ export class SubjectService extends BaseService {
   /**
    * @param id undefined
    */
-   ApiSubjectByIdDeleteResponse(id: number): Observable<HttpResponse<void>> {
+   ApiTeachersByIdDeleteResponse(id: number): Observable<HttpResponse<void>> {
     let __params = this.newParams();
     let __headers = new HttpHeaders();
     let __body: any = null;
 
     let req = new HttpRequest<any>(
       "DELETE",
-      this.rootUrl + `/api/Subject/${id}`,
+      this.rootUrl + `/api/Teachers/${id}`,
       __body,
       {
         headers: __headers,
@@ -220,22 +220,22 @@ export class SubjectService extends BaseService {
   /**
    * @param id undefined
    */
-   ApiSubjectByIdDelete(id: number): Observable<void> {
-    return this.ApiSubjectByIdDeleteResponse(id).pipe(
+   ApiTeachersByIdDelete(id: number): Observable<void> {
+    return this.ApiTeachersByIdDeleteResponse(id).pipe(
       map(_r => _r.body)
     );
   }
 }
 
-export module SubjectService {
+export module TeachersService {
 
   /**
-   * Parameters for ApiSubjectByIdPut
+   * Parameters for ApiTeachersByIdPut
    */
-   export interface ApiSubjectByIdPutParams {
+   export interface ApiTeachersByIdPutParams {
 
     id: number;
 
-    subjects?: Subjects;
+    teachers?: Teachers;
   }
 }

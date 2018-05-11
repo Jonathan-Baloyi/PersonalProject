@@ -24,14 +24,14 @@ export class EditSubjectComponent implements OnInit {
   ngOnInit() {
     this.subjects = this.route.params.subscribe(params => {
       this.subjectId = +params['id'];
-      this.subjectService.ApiSubjectsByIdGet(this.subjectId).subscribe(x => {
+      this.subjectService.ApiSubjectByIdGet(this.subjectId).subscribe(x => {
           this.subject = x;
       });
     });
   }
 
   onSubmit(f: NgForm) {
-    this.subjectService.ApiSubjectsByIdPut({id: this.subjectId, subjects: this.subject} ).subscribe( x => {
+    this.subjectService.ApiSubjectByIdPut({id: this.subjectId, subjects: this.subject} ).subscribe( x => {
       this.subject = x;
     });
   }

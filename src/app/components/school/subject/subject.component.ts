@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class SubjectComponent implements OnInit {
 
-  displayedColumns = ['name', 'code', 'action'];
+  displayedColumns = ['name', 'code', 'edit', 'delete'];
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -27,7 +27,7 @@ export class SubjectComponent implements OnInit {
   }
 
   loadSubjects() {
-    this.subjectService.ApiSubjectsGet().subscribe( x => {
+    this.subjectService.ApiSubjectGet().subscribe( x => {
         this.dataSource = new MatTableDataSource(x);
         this.dataSource.paginator = this.paginator;
     });
@@ -41,7 +41,7 @@ export class SubjectComponent implements OnInit {
     this.router.navigate(['subject', id ]);
   }
   delete(id: number) {
-    this.subjectService.ApiSubjectsByIdDelete(id).subscribe(x => {
+    this.subjectService.ApiSubjectByIdDelete(id).subscribe(x => {
         this.loadSubjects();
     });
   }

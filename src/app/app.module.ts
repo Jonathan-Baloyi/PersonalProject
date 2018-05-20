@@ -28,11 +28,12 @@ import {
   MatSlideToggleModule,
   MatNativeDateModule,
   MatError,
+  MatTabsModule,
 } from '@angular/material';
-import { SubjectService, ValuesService } from './services';
+
 import { HttpClientModule } from '@angular/common/http';
-import { SchoolModule } from './components/school/school.module';
 import { ApiConfiguration } from './api-configuration';
+import { ApplicationManagementModule } from './components/application-management/application-management.module';
 
 
 @NgModule({
@@ -44,14 +45,16 @@ import { ApiConfiguration } from './api-configuration';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SchoolModule
+    ApplicationManagementModule,
+    MatTabsModule
   ],
   providers: [ApiConfiguration],
   bootstrap: [AppComponent],
   exports: [
     AppRoutingModule,
+    MatTabsModule,
+    ApplicationManagementModule,
     HttpClientModule,
-    SchoolModule
   ]
 })
 export class AppModule { }
